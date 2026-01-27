@@ -2,7 +2,7 @@ import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from 'yup';
 import { useDispatch, useSelector } from 'react-redux';
-import { login } from '../features/auth/authThunks';
+import { login } from '../features/auth/authThunks.js';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 

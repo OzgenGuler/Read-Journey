@@ -5,7 +5,7 @@ import Recommended from './pages/Recommended';
 import Library from './pages/Library';
 import Reading from './pages/Reading';
 import ProtectedRoute from './router/ProtectedRoute';
-import MainLayout from '../components/Layout/MainLayout';
+import MainLayout from './components/Layout/MainLayout';
 
 export default function App() {
   return (

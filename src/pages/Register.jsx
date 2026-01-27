@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register as registerThunk } from '../features/auth/authThunks';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { registerUser } from '../api/axios';
 
 const schema = yup.object({
   name: yup.string().required('İsim zorunlu'),
@@ -32,6 +33,20 @@ export default function Register() {
   useEffect(() => {
     if (token) navigate('/recommended');
   }, [token, navigate]);
+
+  // dispatch(() => {
+  //   registerUser({
+  //     name: data.name,
+  //     email: data.email,
+  //     password: data.password,
+  //   })
+  //     .then(() => {
+  //       navigate('/login');
+  //     })
+  //     .catch(err => {
+  //       console.error('Registration error:', err);
+  //     });
+  // });
 
   return (
     <div className="auth-container">
