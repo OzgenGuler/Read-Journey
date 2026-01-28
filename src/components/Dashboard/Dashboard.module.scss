@@ -1,0 +1,23 @@
+// src/components/Dashboard/Dashboard.module.scss
+
+.dashboard {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 32px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: fit-content;
+
+  @media (min-width: 768px) {
+    padding: 40px;
+    gap: 24px;
+    min-width: 320px;
+    max-width: 320px;
+  }
+
+  @media (min-width: 1440px) {
+    min-width: 360px;
+    max-width: 360px;
+  }
+}

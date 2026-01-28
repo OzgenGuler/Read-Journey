@@ -1,0 +1,114 @@
+// src/pages/WelcomePage/WelcomePage.module.scss
+
+.welcomePage {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.container {
+  max-width: 1200px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  align-items: center;
+
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+  }
+}
+
+.content {
+  color: #fff;
+  text-align: center;
+
+  @media (min-width: 768px) {
+    text-align: left;
+  }
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  line-height: 1.2;
+
+  @media (min-width: 768px) {
+    font-size: 48px;
+  }
+}
+
+.highlight {
+  color: #ffd700;
+}
+
+.subtitle {
+  font-size: 16px;
+  margin-bottom: 32px;
+  opacity: 0.9;
+
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  @media (min-width: 768px) {
+    justify-content: flex-start;
+  }
+}
+
+.registerBtn,
+.loginBtn {
+  padding: 14px 32px;
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.registerBtn {
+  background: #fff;
+  color: #667eea;
+  border: 2px solid #fff;
+
+  &:hover {
+    background: transparent;
+    color: #fff;
+  }
+}
+
+.loginBtn {
+  background: transparent;
+  color: #fff;
+  border: 2px solid #fff;
+
+  &:hover {
+    background: #fff;
+    color: #667eea;
+  }
+}
+
+.imageWrapper {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: block;
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+}

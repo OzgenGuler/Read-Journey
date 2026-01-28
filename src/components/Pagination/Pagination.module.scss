@@ -1,0 +1,51 @@
+// src/components/Pagination/Pagination.module.scss
+
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 24px 0;
+}
+
+.btn {
+  width: 40px;
+  height: 40px;
+  background: #fff;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover:not(.disabled) {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+
+    .icon {
+      color: #fff;
+    }
+  }
+
+  &.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  color: var(--color-dark);
+  transition: color 0.2s ease;
+}
+
+.pageInfo {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-dark);
+  min-width: 60px;
+  text-align: center;
+}

@@ -1,0 +1,74 @@
+// src/pages/ReadingPage/ReadingPage.module.scss
+
+.readingPage {
+  min-height: calc(100vh - 80px);
+  background: #f5f5f5;
+  padding: 32px 0;
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (min-width: 768px) {
+    padding: 0 32px;
+  }
+
+  @media (min-width: 1440px) {
+    flex-direction: row;
+    padding: 0 64px;
+    gap: 40px;
+  }
+}
+
+.content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.details {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  padding: 4px;
+  background: var(--color-light-gray);
+  border-radius: var(--radius-full);
+}
+
+.tab {
+  flex: 1;
+  padding: 12px 20px;
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--color-gray);
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: var(--color-dark);
+  }
+
+  &.active {
+    background: #fff;
+    color: var(--color-dark);
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+  }
+}

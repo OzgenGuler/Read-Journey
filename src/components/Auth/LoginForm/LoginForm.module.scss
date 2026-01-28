@@ -1,0 +1,81 @@
+// src/components/Auth/LoginForm/LoginForm.module.scss
+// RegisterForm ile aynı stilleri kullanıyor
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-gray);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.input {
+  padding: 14px 16px;
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: var(--radius-md);
+  background: #fff;
+  font-size: 14px;
+  color: var(--color-dark);
+  outline: none;
+  transition: all 0.2s ease;
+
+  &:focus {
+    border-color: var(--color-primary);
+  }
+
+  &::placeholder {
+    color: var(--color-gray);
+  }
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.error {
+  font-size: 12px;
+  color: var(--color-error);
+  margin-top: -4px;
+}
+
+.submitButton {
+  padding: 14px 24px;
+  background: var(--color-dark);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 8px;
+
+  &:hover:not(:disabled) {
+    background: var(--color-primary);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+@media (max-width: 767px) {
+  .form {
+    max-width: 100%;
+  }
+}

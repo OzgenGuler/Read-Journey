@@ -1,31 +1,97 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Recommended from './pages/Recommended';
-import Library from './pages/Library';
-import Reading from './pages/Reading';
-import ProtectedRoute from './router/ProtectedRoute';
-import MainLayout from './components/Layout/MainLayout';
+// src/App.jsx
+import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentUser } from "./redux/auth/authOperations";
 
-export default function App() {
+// Routes
+import PrivateRoute from "./routes/PrivateRoute";
+import PublicRoute from "./routes/PublicRoute";
+
+// Pages
+import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import RegisterPage from "./pages/RegisterPage/RegisterPage";
+import LoginPage from "./pages/LoginPage/LoginPage";
+import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
+import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
+import ReadingPage from "./pages/ReadingPage/ReadingPage";
+
+// Layout
+import Header from "./components/Layout/Header/Header";
+
+function App() {
+  const dispatch = useDispatch();
+  const { token, isLoggedIn } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (token && !isLoggedIn) {
+      dispatch(getCurrentUser());
+    }
+  }, [dispatch, token, isLoggedIn]);
+
   return (
-    <Routes>
-      <Route path="/" element={<Navigate to="/recommended" />} />
+    <div className="app">
+      <Routes>
+        {/* Public Routes */}
+        <Route
+          path="/"
+          element={
+            <PublicRoute>
+              <WelcomePage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            <PublicRoute restricted>
+              <RegisterPage />
+            </PublicRoute>
+          }
+        />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute restricted>
+              <LoginPage />
+            </PublicRoute>
+          }
+        />
 
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
+        {/* Private Routes */}
+        <Route
+          path="/recommended"
+          element={
+            <PrivateRoute>
+              <Header />
+              <RecommendedPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/library"
+          element={
+            <PrivateRoute>
+              <Header />
+              <MyLibraryPage />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/reading/:bookId"
+          element={
+            <PrivateRoute>
+              <Header />
+              <ReadingPage />
+            </PrivateRoute>
+          }
+        />
 
-      <Route
-        element={
-          <ProtectedRoute>
-            <MainLayout />
-          </ProtectedRoute>
-        }
-      >
-        <Route path="/recommended" element={<Recommended />} />
-        <Route path="/library" element={<Library />} />
-        <Route path="/reading" element={<Reading />} />
-      </Route>
-    </Routes>
+        {/* Catch all - redirect to home */}
+        <Route path="*" element={<Navigate to="/" />} />
+      </Routes>
+    </div>
   );
 }
+
+export default App;

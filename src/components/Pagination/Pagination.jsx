@@ -1,11 +1,37 @@
-export default function Pagination({ page, totalPages, onChange }) {
+// src/components/Pagination/Pagination.jsx
+import styles from "./Pagination.module.scss";
+
+const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+  const isFirstPage = currentPage === 1;
+  const isLastPage = currentPage === totalPages;
+
   return (
-    <div style={{ display: 'flex', gap: '8px', marginTop: '20px' }}>
-      {Array.from({ length: totalPages }, (_, i) => i + 1).map(p => (
-        <button key={p} disabled={p === page} onClick={() => onChange(p)}>
-          {p}
-        </button>
-      ))}
+    <div className={styles.pagination}>
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={isFirstPage}
+        className={`${styles.btn} ${isFirstPage ? styles.disabled : ""}`}
+      >
+        <svg className={styles.icon}>
+          <use href="/sprite.svg#icon-arrow-left"></use>
+        </svg>
+      </button>
+
+      <span className={styles.pageInfo}>
+        {currentPage} / {totalPages}
+      </span>
+
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={isLastPage}
+        className={`${styles.btn} ${isLastPage ? styles.disabled : ""}`}
+      >
+        <svg className={styles.icon}>
+          <use href="/sprite.svg#icon-arrow-right"></use>
+        </svg>
+      </button>
     </div>
   );
-}
+};
+
+export default Pagination;

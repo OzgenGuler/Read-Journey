@@ -1,0 +1,30 @@
+// src/components/Layout/UserNav/UserNav.module.scss
+
+.nav {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  background: rgba(245, 245, 245, 0.5);
+  border-radius: var(--radius-full);
+}
+
+.link {
+  padding: 12px 24px;
+  color: var(--color-gray);
+  border-radius: var(--radius-full);
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+
+  &:hover {
+    color: var(--color-dark);
+  }
+
+  &.active {
+    background: #fff;
+    color: var(--color-dark);
+    font-weight: 600;
+  }
+}

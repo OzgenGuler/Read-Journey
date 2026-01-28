@@ -1,0 +1,18 @@
+// src/components/Reading/Statistics/Statistics.module.scss
+
+.statistics {
+  padding: 20px;
+  background: #fff;
+  border-radius: var(--radius-md);
+  min-height: 300px;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px;
+  text-align: center;
+  color: var(--color-gray);
+  font-size: 14px;
+}
