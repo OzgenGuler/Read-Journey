@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-// import { login, register, logout } from './authThunks';
+import { registerUser, loginUser, signoutUser } from '../../api/axios';
 import { setToken, clearToken } from '../../api/axios';
-import { registerUser, loginUser } from '../../api/axios';
+
+/* ================== THUNKS ================== */
 
 export const register = createAsyncThunk(
   'auth/register',
@@ -29,6 +30,19 @@ export const login = createAsyncThunk(
   }
 );
 
+export const signout = createAsyncThunk('auth/signout', async (_, thunkAPI) => {
+  try {
+    await signoutUser();
+    clearToken();
+  } catch (error) {
+    return thunkAPI.rejectWithValue(
+      error.response?.data?.message || 'Logout failed'
+    );
+  }
+});
+
+/* ================== SLICE ================== */
+
 const authSlice = createSlice({
   name: 'auth',
   initialState: {
@@ -38,14 +52,7 @@ const authSlice = createSlice({
     isLoading: false,
     error: null,
   },
-  reducers: {
-    logout: state => {
-      state.user = null;
-      state.token = null;
-      state.isLoggedIn = false;
-      clearToken();
-    },
-  },
+  reducers: {},
   extraReducers: builder => {
     builder
       // REGISTER
@@ -80,9 +87,24 @@ const authSlice = createSlice({
       .addCase(login.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+
+      // LOGOUT 🔥
+      .addCase(signout.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(signout.fulfilled, state => {
+        state.isLoading = false;
+        state.user = null;
+        state.token = null;
+        state.isLoggedIn = false;
+        state.error = null;
+      })
+      .addCase(signout.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       });
   },
 });
 
-export const { logout } = authSlice.actions;
 export default authSlice.reducer;

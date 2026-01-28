@@ -25,8 +25,8 @@ export const login = createAsyncThunk('auth/login', async (data, thunkAPI) => {
   }
 });
 
-export const logout = createAsyncThunk('auth/logout', async () => {
-  await api.post('/users/logout');
+export const signout = createAsyncThunk('auth/signout', async () => {
+  await api.post('/users/signout');
   clearToken();
 });
 

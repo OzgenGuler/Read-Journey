@@ -5,12 +5,12 @@ import { useDispatch, useSelector } from 'react-redux';
 import { register as registerThunk } from '../features/auth/authThunks';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../api/axios';
+// import { registerUser } from '../api/axios';
 
 const schema = yup.object({
   name: yup.string().required('İsim zorunlu'),
   email: yup.string().email('Geçerli email gir').required('Email zorunlu'),
-  password: yup.string().min(6, 'En az 6 karakter').required('Şifre zorunlu'),
+  password: yup.string().min(7, 'En az 7 karakter').required('Şifre zorunlu'),
 });
 
 export default function Register() {

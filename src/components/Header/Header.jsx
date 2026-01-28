@@ -1,6 +1,6 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { logout } from '../../features/auth/authThunks';
+import { signout } from '../../features/auth/authThunks';
 
 export default function Header() {
   const dispatch = useDispatch();
@@ -8,7 +8,7 @@ export default function Header() {
   const user = useSelector(state => state.auth.user);
 
   const handleLogout = () => {
-    dispatch(logout());
+    dispatch(signout());
     navigate('/login');
   };
 

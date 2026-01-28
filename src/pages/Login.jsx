@@ -8,13 +8,13 @@ import { useNavigate } from 'react-router-dom';
 
 const schema = yup.object({
   email: yup.string().email('Geçerli email gir').required('Email zorunlu'),
-  password: yup.string().min(6, 'En az 6 karakter').required('Şifre zorunlu'),
+  password: yup.string().min(7, 'En az 7 karakter').required('Şifre zorunlu'),
 });
 
 export default function Login() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { token, isLoading, error } = useSelector(state => state.auth);
+  const { isLoading, isLoggedIn, error } = useSelector(state => state.auth);
 
   const {
     register,
@@ -29,21 +29,21 @@ export default function Login() {
   };
 
   useEffect(() => {
-    if (token) navigate('/recommended');
-  }, [token, navigate]);
+    if (isLoggedIn) navigate('/recommended');
+  }, [isLoggedIn, navigate]);
 
   return (
     <div className="auth-container">
       <h2>Login</h2>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <input placeholder="Email" {...register('email')} />
+        <input placeholder="Email" {...register('email', { required: true })} />
         <p>{errors.email?.message}</p>
 
         <input
           type="password"
           placeholder="Password"
-          {...register('password')}
+          {...register('password', { required: true, minLength: 7 })}
         />
         <p>{errors.password?.message}</p>
 

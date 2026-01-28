@@ -21,4 +21,10 @@ export const loginUser = async credentials => {
   const { data } = await api.post('/users/login', credentials);
   return data;
 };
+
+export const signoutUser = async () => {
+  await api.post('/users/signout');
+  clearToken();
+};
+
 export default api;
