@@ -1,14 +1,24 @@
 // src/pages/WelcomePage/WelcomePage.jsx
-import { Link } from "react-router-dom";
-import styles from "./WelcomePage.module.scss";
+import { Link } from 'react-router-dom';
+import Logo from '../../assets/Logo.png';
+import LogoMobil from '../../assets/LogoMobil.png';
+import styles from './WelcomePage.module.scss';
 
 const WelcomePage = () => {
   return (
     <div className={styles.welcomePage}>
       <div className={styles.container}>
         <div className={styles.content}>
+          <div className={styles.logo}>
+            <img src={Logo} alt="Read Journey" className={styles.logoImage} />
+            <img
+              src={LogoMobil}
+              alt="Read Journey"
+              className={styles.LogoMobil}
+            />
+          </div>
           <h1 className={styles.title}>
-            Expand your mind, reading{" "}
+            Expand your mind, reading{' '}
             <span className={styles.highlight}>a book</span>
           </h1>
           <p className={styles.subtitle}>
@@ -25,7 +35,7 @@ const WelcomePage = () => {
         </div>
         <div className={styles.imageWrapper}>
           <img
-            src="/welcome-illustration.png"
+            src="/src/assets/images/iPhoneBlack.png"
             alt="Reading"
             className={styles.image}
           />

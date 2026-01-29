@@ -1,11 +1,20 @@
 // src/pages/WelcomePage/WelcomePage.module.scss
 
+// .welcomePage {
+//   min-height: 100vh;
+//   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   padding: 20px;
+// }
+
 .welcomePage {
   min-height: 100vh;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
   align-items: center;
   justify-content: center;
+  background-color: var(--bg-dark);
   padding: 20px;
 }
 
@@ -15,6 +24,19 @@
   grid-template-columns: 1fr;
   gap: 40px;
   align-items: center;
+
+  .content {
+      max-width: 600px;
+      text-align: center;
+    }
+
+        .logo {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 8px;
+          margin-bottom: 40px;
+        }
 
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;

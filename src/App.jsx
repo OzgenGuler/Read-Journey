@@ -1,27 +1,27 @@
 // src/App.jsx
-import { Routes, Route, Navigate } from "react-router-dom";
-import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { getCurrentUser } from "./redux/auth/authOperations";
+import { Routes, Route, Navigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentUser } from './redux/auth/authOperations';
 
 // Routes
-import PrivateRoute from "./routes/PrivateRoute";
-import PublicRoute from "./routes/PublicRoute";
+import PrivateRoute from './routes/PrivateRoute';
+import PublicRoute from './routes/PublicRoute';
 
 // Pages
-import WelcomePage from "./pages/WelcomePage/WelcomePage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RecommendedPage from "./pages/RecommendedPage/RecommendedPage";
-import MyLibraryPage from "./pages/MyLibraryPage/MyLibraryPage";
-import ReadingPage from "./pages/ReadingPage/ReadingPage";
+import WelcomePage from './pages/WelcomePage/WelcomePage';
+import RegisterPage from './pages/RegisterPage/RegisterPage';
+import LoginPage from './pages/LoginPage/LoginPage';
+import RecommendedPage from './pages/RecommendedPage/RecommendedPage';
+import MyLibraryPage from './pages/MyLibraryPage/MyLibraryPage';
+import ReadingPage from './pages/ReadingPage/ReadingPage';
 
 // Layout
-import Header from "./components/Layout/Header/Header";
+import Header from './components/Layout/Header/Header';
 
 function App() {
   const dispatch = useDispatch();
-  const { token, isLoggedIn } = useSelector((state) => state.auth);
+  const { token, isLoggedIn } = useSelector(state => state.auth);
 
   useEffect(() => {
     if (token && !isLoggedIn) {
@@ -32,7 +32,7 @@ function App() {
   return (
     <div className="app">
       <Routes>
-        {/* Public Routes */}
+        {/* Public Routes
         <Route
           path="/"
           element={
@@ -40,9 +40,9 @@ function App() {
               <WelcomePage />
             </PublicRoute>
           }
-        />
+        /> */}
         <Route
-          path="/register"
+          path="/"
           element={
             <PublicRoute restricted>
               <RegisterPage />
