@@ -54,6 +54,7 @@ const RegistrationForm = () => {
             id="name"
             type="text"
             name="name"
+            placeholder="Ilona Ratushniak"
             value={values.name}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -80,6 +81,7 @@ const RegistrationForm = () => {
             id="email"
             type="email"
             name="email"
+            placeholder="Your@email.com"
             value={values.email}
             onChange={handleChange}
             onBlur={handleBlur}
@@ -106,6 +108,7 @@ const RegistrationForm = () => {
             id="password"
             type="password"
             name="password"
+            placeholder="Yourpasswordhere"
             value={values.password}
             onChange={handleChange}
             onBlur={handleBlur}
