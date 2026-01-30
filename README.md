@@ -93,12 +93,11 @@ Chart.js + react-chartjs-2
 
 📁 Proje Yapısı
 src/
-├── app/ # Redux store
+├── api/ # Redux store
 ├── components/ # Reusable UI components
-├── features/ # Redux slices (auth, books, library, reading)
 ├── pages/ # Route-based pages
-├── services/ # API servisleri (axios)
-├── hooks/ # Custom hooks
+├── redux/ # API servisleri (axios)
+├── routes/ # Yönlendiriciler
 ├── styles/ # Global ve responsive stiller
 
 🎨 Responsive Tasarım
